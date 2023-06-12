@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+:root {
+  --mainColor: #146ebe;
+  --textMainColor: #6e7076;
+  --mainBoxShadow: 2px 2px 4px #ccc, -2px -2px 4px #ccc;
+  --warnColor: #c63100;
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  text-transform: capitalize !important;
+  font-family: "Poppins";
+}
