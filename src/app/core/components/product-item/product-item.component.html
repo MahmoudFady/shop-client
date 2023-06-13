@@ -1,0 +1,24 @@
+<div class="product">
+  <button class="love">
+    <i class="fa-sharp fa-regular fa-heart"></i>
+  </button>
+  <span class="discount" *ngIf="product.discount.isValid"
+    >{{ product.discount.percentage }} % off</span
+  >
+  <div class="thumb">
+    <img [src]="product.thumbnail" alt="" />
+  </div>
+  <div class="info">
+    <span class="category">{{ product.category }}</span>
+    <h5 class="title">{{ product.title }}</h5>
+    <div class="price">
+      <span *ngIf="product.discount.isValid" class="real">{{
+        product.price
+      }}</span>
+      <span class="afterDisc">{{ product.priceAfterDiscount }} $</span>
+    </div>
+  </div>
+  <div class="info btns-ctrls">
+    <button><i class="fa-sharp fa-solid fa-cart-plus"></i></button>
+  </div>
+</div>

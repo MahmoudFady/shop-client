@@ -1,0 +1,14 @@
+nav {
+  margin-bottom: 25px;
+}
+a.navbar-brand img {
+  width: 40px;
+  height: 30px;
+}
+button.navbar-toggler {
+  border: none;
+  outline: none;
+}
+a.nav-link {
+  margin: 0px 10px;
+}

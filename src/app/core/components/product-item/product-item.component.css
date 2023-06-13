@@ -1,0 +1,64 @@
+.product {
+  margin-bottom: 10px;
+  width: 100%;
+  box-shadow: var(--boxShadow);
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.product img {
+  width: 100%;
+  height: 180px;
+}
+.info {
+  padding: 10px;
+}
+.info .category {
+  font-size: 12px;
+  margin: 5px 0px;
+  padding: 3px 5px;
+  display: block;
+  background-color: rgb(71, 196, 196);
+  width: fit-content;
+  border-radius: 5px;
+}
+.info .price {
+  text-align: center;
+}
+.info .price span {
+  display: inline-block;
+  margin: 0px 10px;
+}
+.info .price span.real {
+  text-decoration: line-through;
+}
+button.love {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: none;
+  padding: 0px;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px #ccc, -1px -1px 3px #ccc;
+}
+span.discount {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  background-color: #f00;
+  color: #fff;
+  width: fit-content;
+  padding: 3px 6px;
+  border-radius: 10px;
+}
+div.btns-ctrls button {
+  width: 100%;
+  border: none;
+  background-color: var(--mainColor);
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+}

@@ -1,15 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 :root {
-  --mainColor: #146ebe;
-  --textMainColor: #6e7076;
-  --mainBoxShadow: 2px 2px 4px #ccc, -2px -2px 4px #ccc;
-  --warnColor: #c63100;
+  --mainColor: #2d7ad5;
+  --textColor: rgb(0 0 0 / 55%);
+  --boxShadow: 1px 1px 2px #ccc, -1px -1px 2px #ccc;
+  --warnColor: #dc3545;
 }
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Josefin Sans";
   text-transform: capitalize !important;
-  font-family: "Poppins";
+}
+a,
+a:hover {
+  cursor: pointer;
+  text-decoration: none !important;
+  color: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.warn-bg {
+  background-color: var(--warnColor) !important;
+  color: #fff !important;
+}
+.success-bg {
+  background-color: #080 !important;
+  color: #fff !important;
 }
