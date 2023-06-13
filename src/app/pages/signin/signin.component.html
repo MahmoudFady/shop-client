@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row flex-column justify-content-center align-items-center">
+    <div *ngIf="errMsg" class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+      <div class="alert alert-danger">{{ errMsg }}</div>
+    </div>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
       <div class="form-container">
         <h1 class="text-center">sign in</h1>
-        <form #form="ngForm">
+        <form #form="ngForm" (ngSubmit)="signin(form)">
           <mat-form-field>
             <mat-label>email</mat-label>
             <input

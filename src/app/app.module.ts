@@ -17,7 +17,7 @@ import { SearchComponent } from './core/components/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductSingleComponent } from './pages/product-single/product-single.component';
 import { ShopComponent } from './pages/shop/shop.component';
-
+import { LoaderComponent } from './core/shared/components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +31,7 @@ import { ShopComponent } from './pages/shop/shop.component';
     ProductDetailsComponent,
     SearchComponent,
     ProductSingleComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

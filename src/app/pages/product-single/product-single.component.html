@@ -1,4 +1,5 @@
-<div class="row mb-5">
+<app-loader *ngIf="loading"></app-loader>
+<div *ngIf="!loading" class="row mb-5">
   <app-product-details [product]="product"></app-product-details>
 </div>
 <div class="row">
