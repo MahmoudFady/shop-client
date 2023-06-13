@@ -1,0 +1,9 @@
+<div class="row mb-5">
+  <app-product-details [product]="product"></app-product-details>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h3>similar products</h3>
+  </div>
+  <app-product-list [query]="'category=' + product.category"></app-product-list>
+</div>

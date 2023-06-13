@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShopComponent } from './core/components/shop/shop.component';
 import { SigninComponent } from './core/components/signin/signin.component';
 import { SignupComponent } from './core/components/signup/signup.component';
+import { ProductDetailsComponent } from './core/components/product-details/product-details.component';
+import { ProductSingleComponent } from './core/components/product-single/product-single.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,10 @@ const routes: Routes = [
   {
     path: 'shop',
     component: ShopComponent,
+  },
+  {
+    path: 'shop/:id',
+    component: ProductSingleComponent,
   },
   {
     path: 'auth',

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { IProductItem } from '../shared/models/product-item.model';
+import { IProductDetails } from '../shared/models/product-details.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,5 +17,10 @@ export class ProductService {
       length: number;
       products: IProductItem[];
     }>(endPoint);
+  }
+  getProductDetails(id: string) {
+    return this.http.get<{ message: string; product: IProductDetails }>(
+      this.productEndPoint + id
+    );
   }
 }

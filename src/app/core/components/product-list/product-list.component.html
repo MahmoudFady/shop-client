@@ -10,6 +10,7 @@
   </div>
 </div>
 <mat-paginator
+  *ngIf="length > limit"
   [length]="length"
   [pageSize]="limit"
   [pageSizeOptions]="[5, 10, 25, 30]"

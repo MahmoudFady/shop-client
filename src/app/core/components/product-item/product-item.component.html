@@ -9,13 +9,17 @@
     <img [src]="product.thumbnail" alt="" />
   </div>
   <div class="info">
-    <span class="category">{{ product.category }}</span>
-    <h5 class="title">{{ product.title }}</h5>
+    <span class="brand">{{ product.brand }}</span>
+    <h5 class="title" [routerLink]="['/shop', product._id]">
+      <a>{{ product.title }}</a>
+    </h5>
     <div class="price">
-      <span *ngIf="product.discount.isValid" class="real">{{
+      <span [ngClass]="{ 'real-throw': product.discount.isValid }">{{
         product.price
       }}</span>
-      <span class="afterDisc">{{ product.priceAfterDiscount }} $</span>
+      <span *ngIf="product.discount.isValid" class="afterDisc"
+        >{{ product.priceAfterDiscount }} </span
+      >$
     </div>
   </div>
   <div class="info btns-ctrls">

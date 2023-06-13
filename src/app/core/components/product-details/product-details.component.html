@@ -1,1 +1,31 @@
-<p>product-details works!</p>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <div class="images">
+      <img class="thumbnail" [src]="product.thumbnail" alt="" />
+      <ul>
+        <li *ngFor="let imgSrc of product.images">
+          <img [src]="imgSrc" alt="" (click)="displayImage(imgSrc)" />
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-8">
+    <div class="info">
+      <h6>{{ product.category }}</h6>
+      <h5>{{ product.title }}</h5>
+      <p>{{ product.description }}</p>
+      <h6>{{ product.brand }}</h6>
+      <div class="price">
+        <span [ngClass]="{ 'real-throw': product.discount.isValid }">{{
+          product.price
+        }}</span>
+        <span *ngIf="product.discount.isValid" class="afterDisc"
+          >{{ product.priceAfterDiscount }} </span
+        >$
+      </div>
+    </div>
+    <div class="info btns-ctrls">
+      <button><i class="fa-sharp fa-solid fa-cart-plus"></i></button>
+    </div>
+  </div>
+</div>

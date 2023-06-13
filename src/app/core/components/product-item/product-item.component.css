@@ -13,7 +13,7 @@
 .info {
   padding: 10px;
 }
-.info .category {
+.info .brand {
   font-size: 12px;
   margin: 5px 0px;
   padding: 3px 5px;
@@ -21,6 +21,7 @@
   background-color: rgb(71, 196, 196);
   width: fit-content;
   border-radius: 5px;
+  margin-bottom: 15px;
 }
 .info .price {
   text-align: center;
@@ -29,7 +30,7 @@
   display: inline-block;
   margin: 0px 10px;
 }
-.info .price span.real {
+.info .price span.real-throw {
   text-decoration: line-through;
 }
 button.love {

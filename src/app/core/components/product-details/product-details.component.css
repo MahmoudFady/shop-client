@@ -1,0 +1,51 @@
+.row {
+  box-shadow: var(--boxShadow);
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+img {
+  border-radius: 5px;
+}
+.thumbnail {
+  height: 250px;
+  width: 100%;
+}
+.images ul {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.images ul li {
+  list-style: none;
+  width: 80px;
+  height: 70px;
+  float: left;
+  border-radius: 5px;
+}
+.images ul li:hover {
+  cursor: pointer;
+  border: 2px solid var(--mainColor);
+}
+.images ul li img {
+  height: 100%;
+  width: 100%;
+}
+.info .price span {
+  display: inline-block;
+  margin: 0px 10px;
+}
+.info .price span.real-throw {
+  text-decoration: line-through;
+}
+div.btns-ctrls button {
+  width: 40%;
+  border: none;
+  background-color: var(--mainColor);
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+}

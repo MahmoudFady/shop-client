@@ -16,6 +16,7 @@ import { ProductItemComponent } from './core/components/product-item/product-ite
 import { ProductDetailsComponent } from './core/components/product-details/product-details.component';
 import { SearchComponent } from './core/components/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductSingleComponent } from './core/components/product-single/product-single.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductItemComponent,
     ProductDetailsComponent,
     SearchComponent,
+    ProductSingleComponent,
   ],
   imports: [
     BrowserModule,
