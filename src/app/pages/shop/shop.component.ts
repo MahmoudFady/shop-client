@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FiltersQueryService } from '../../services/filter-query.service';
+import { FiltersQueryService } from 'src/app/core/services/filter-query.service';
 
 @Component({
   selector: 'app-shop',

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../services/product.service';
-import { IProductDetails } from '../../shared/models/product-details.model';
+import { ProductService } from 'src/app/core/services/product.service';
+import { IProductDetails } from 'src/app/core/shared/models/product-details.model';
 
 @Component({
   selector: 'app-product-single',
