@@ -12,3 +12,6 @@ button.navbar-toggler {
 a.nav-link {
   margin: 0px 10px;
 }
+a > i {
+  padding: 5px;
+}

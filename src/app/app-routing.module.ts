@@ -4,6 +4,7 @@ import { ProductSingleComponent } from './pages/product-single/product-single.co
 import { ShopComponent } from './pages/shop/shop.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { FavouritesComponent } from './pages/favourites/favourites.component';
 const routes: Routes = [
   {
     path: '',
@@ -17,6 +18,15 @@ const routes: Routes = [
   {
     path: 'shop/:id',
     component: ProductSingleComponent,
+  },
+  {
+    path: 'user',
+    children: [
+      {
+        path: 'favs',
+        component: FavouritesComponent,
+      },
+    ],
   },
   {
     path: 'auth',

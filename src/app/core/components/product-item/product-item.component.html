@@ -1,6 +1,7 @@
 <div class="product">
-  <button class="love">
-    <i class="fa-sharp fa-regular fa-heart"></i>
+  <button class="love" (click)="toggleLove()">
+    <i *ngIf="!loved" class="fa-sharp fa-regular fa-heart"></i>
+    <i *ngIf="loved" class="fa-sharp fa-solid fa-heart"></i>
   </button>
   <span class="discount" *ngIf="product.discount.isValid"
     >{{ product.discount.percentage }} % off</span

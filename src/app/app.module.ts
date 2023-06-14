@@ -19,6 +19,7 @@ import { ProductSingleComponent } from './pages/product-single/product-single.co
 import { ShopComponent } from './pages/shop/shop.component';
 import { LoaderComponent } from './core/shared/components/loader/loader.component';
 import { AuthInterceptorService } from './core/services/auth-interceptor.service';
+import { FavouritesComponent } from './pages/favourites/favourites.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { AuthInterceptorService } from './core/services/auth-interceptor.service
     SearchComponent,
     ProductSingleComponent,
     LoaderComponent,
+    FavouritesComponent,
   ],
   imports: [
     BrowserModule,

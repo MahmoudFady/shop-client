@@ -10,7 +10,7 @@ interface IUserRes {
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly userEndPoint = environment.baseUrl + 'users/';
-  private readonly isAuth$ = new BehaviorSubject(false);
+  private readonly isAuth$ = new Subject<boolean>();
   private http = inject(HttpClient);
   private router = inject(Router);
   signup(user: any) {
