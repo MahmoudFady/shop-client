@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthServie } from 'src/app/core/services/auth.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -10,16 +10,17 @@ import { AuthServie } from 'src/app/core/services/auth.service';
 export class SigninComponent {
   loading = false;
   errMsg!: string | null;
-  authServie = inject(AuthServie);
+  authService = inject(AuthService);
   constructor() {}
   ngOnInit() {}
   signin(f: NgForm) {
     if (f.invalid) return;
     this.loading = true;
-    this.authServie.signin(f.value).subscribe({
+    this.authService.signin(f.value).subscribe({
       next: (res) => {
         this.loading = false;
-        console.log(res);
+        const { token, userId } = res;
+        this.authService.successAuth(token, userId);
       },
       error: (res) => {
         this.errMsg = res.error.message;

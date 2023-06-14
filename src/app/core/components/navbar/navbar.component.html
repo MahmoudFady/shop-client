@@ -24,19 +24,19 @@
           <i class="fa-solid fa-fire"></i>
           popular
         </a>
-        <a class="nav-link" routerLink="/user/favs">
+        <a *ngIf="isAuth" class="nav-link" routerLink="/user/favs">
           <i class="fa-solid fa-heart"></i>
         </a>
-        <a class="nav-link" routerLink="user/cart">
+        <a *ngIf="isAuth" class="nav-link" routerLink="user/cart">
           <i class="fa-solid fa-cart-shopping"></i>
         </a>
-        <a class="nav-link" routerLink="/user/profile">
+        <a *ngIf="isAuth" class="nav-link" routerLink="/user/profile">
           <i class="fa-solid fa-user"></i>
         </a>
-        <a class="nav-link" routerLink="/auth/signin">
+        <a *ngIf="!isAuth" class="nav-link" routerLink="/auth/signin">
           <i class="fa-solid fa-right-to-bracket"></i>
         </a>
-        <a class="nav-link">
+        <a *ngIf="isAuth" class="nav-link" (click)="logout()">
           <i class="fa-solid fa-right-from-bracket"></i>
         </a>
       </div>

@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row flex-column justify-content-center align-items-center">
+    <div *ngIf="errMsg" class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+      <div class="alert alert-danger">{{ errMsg }}</div>
+    </div>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
       <div class="form-container">
         <h1 class="text-center">sign up</h1>
-        <form #form="ngForm">
+        <form #form="ngForm" (ngSubmit)="signup(form)">
           <div class="row" ngModelGroup="name">
             <div class="col-6">
               <mat-form-field>
@@ -30,7 +33,7 @@
                   placeholder="ex : hassan"
                   required
                   minlength="3"
-                  name="lname"
+                  name="last"
                   ngModel
                   #lname="ngModel"
                 />
@@ -146,7 +149,7 @@
             <input
               type="password"
               matInput
-              placeholder="ex : jdkson12"
+              placeholder="ex : 123@3sV"
               required
               name="password"
               ngModel
