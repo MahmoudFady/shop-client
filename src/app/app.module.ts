@@ -14,10 +14,11 @@ import { ProductListComponent } from './core/components/product-list/product-lis
 import { ProductItemComponent } from './core/components/product-item/product-item.component';
 import { ProductDetailsComponent } from './core/components/product-details/product-details.component';
 import { SearchComponent } from './core/components/search/search.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProductSingleComponent } from './pages/product-single/product-single.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { LoaderComponent } from './core/shared/components/loader/loader.component';
+import { AuthInterceptorService } from './core/services/auth-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,13 @@ import { LoaderComponent } from './core/shared/components/loader/loader.componen
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
