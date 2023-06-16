@@ -18,7 +18,6 @@ export class LocalStorageService {
 
   retrieveSecureData(key: string): string {
     const encryptedData = localStorage.getItem(key);
-    console.log('key', key);
     if (encryptedData) {
       return this.decrypt(encryptedData);
     }

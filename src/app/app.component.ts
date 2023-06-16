@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FavouritesService } from './core/services/favourites.service';
-import { LocalStorageService } from './core/services/local-stroage.service';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +10,8 @@ import { LocalStorageService } from './core/services/local-stroage.service';
 export class AppComponent {
   title = 'shop-client';
   private favsService = inject(FavouritesService);
-  private localStorageService = inject(LocalStorageService);
-
+  private authService = inject(AuthService);
   ngOnInit() {
-    this.favsService.getUserFavs();
-    console.log(this.localStorageService.retrieveSecureData('userId'));
+    if (this.authService.isAuthSaved()) this.favsService.getUserFavs();
   }
 }

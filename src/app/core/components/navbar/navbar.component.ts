@@ -23,7 +23,6 @@ export class NavbarComponent {
     this.favsService.getFavsListener().subscribe({
       next: (result) => {
         this.favsLength = result.ids.length;
-        console.log(this.favsLength);
       },
     });
   }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { LocalStorageService } from './local-stroage.service';
+import { FavouritesService } from './favourites.service';
 interface IUserRes {
   token: string;
   userId: string;
@@ -13,6 +14,7 @@ export class AuthService {
   private readonly userEndPoint = environment.baseUrl + 'users/';
   private readonly isAuth$ = new Subject<boolean>();
   private localStorageService = inject(LocalStorageService);
+  private favsService = inject(FavouritesService);
   private http = inject(HttpClient);
   private router = inject(Router);
   signup(user: any) {
@@ -24,6 +26,7 @@ export class AuthService {
   successAuth(token: string, userId: string) {
     this.localStorageService.storeSecureData('token', token);
     this.localStorageService.storeSecureData('userId', userId);
+    this.favsService.getUserFavs();
     this.isAuth$.next(true);
   }
   logout() {
@@ -32,7 +35,6 @@ export class AuthService {
     this.router.navigateByUrl('/auth/signin');
   }
   isAuthSaved() {
-    console.log(this.getToken())
     return this.getToken() && this.getUserId() ? true : false;
   }
   getToken() {

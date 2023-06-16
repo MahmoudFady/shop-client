@@ -11,7 +11,6 @@ export class FavouritesComponent {
   products!: IProductItem[];
   favsService = inject(FavouritesService);
   ngOnInit() {
-    this.products = this.favsService.favs.products;
     this.favsService.getFavsListener().subscribe({
       next: (result) => {
         this.products = result.products;

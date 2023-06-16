@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment.development';
@@ -13,10 +13,10 @@ export class FavouritesService {
     ids: string[];
     products: IProductItem[];
   };
-  private readonly favs$ = new Subject<{
+  private readonly favs$ = new BehaviorSubject<{
     ids: string[];
     products: IProductItem[];
-  }>();
+  }>({ ids: [], products: [] });
   private readonly favsEndPoint = environment.baseUrl + 'favs/';
   private http = inject(HttpClient);
   getUserFavs() {
@@ -34,9 +34,9 @@ export class FavouritesService {
   popProduct(id: string) {
     this.http.delete(this.favsEndPoint + id).subscribe({
       next: (res) => {
-        const index = this.favs.ids.indexOf(id);
-        this.favs.products.splice(index, 1);
-        this.favs.ids.splice(index, 1);
+        const index = this.favs!.ids.indexOf(id);
+        this.favs!.products.splice(index, 1);
+        this.favs!.ids.splice(index, 1);
         this.favs$.next(this.favs);
       },
     });
@@ -52,5 +52,12 @@ export class FavouritesService {
   }
   getFavsListener() {
     return this.favs$.asObservable();
+  }
+  clearFavs() {
+    this.favs = {
+      ids: [],
+      products: [],
+    };
+    this.favs$.next(this.favs);
   }
 }

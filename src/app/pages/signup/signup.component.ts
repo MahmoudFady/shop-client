@@ -11,7 +11,6 @@ export class SignupComponent {
   errMsg!: string | null;
   authService = inject(AuthService);
   signup(form: NgForm) {
-    console.log(form.value);
     if (form.invalid) return;
     this.authService.signup(form.value).subscribe({
       next: (res) => {
