@@ -3,7 +3,7 @@
 :root {
   --mainColor: #2d7ad5;
   --textColor: rgb(0 0 0 / 55%);
-  --boxShadow: 1px 1px 2px #ccc, -1px -1px 2px #ccc;
+  --boxShadow: 1px 1px #ccc, -1px -1px #ccc;
   --warnColor: #dc3545;
 }
 * {
