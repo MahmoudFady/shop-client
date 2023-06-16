@@ -21,9 +21,11 @@ import { LoaderComponent } from './core/shared/components/loader/loader.componen
 import { AuthInterceptorService } from './core/services/auth-interceptor.service';
 import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { TextShortenPipe } from './core/pipes/text-shorten.pipe';
 @NgModule({
   declarations: [
     AppComponent,
+    TextShortenPipe,
     NavbarComponent,
     SigninComponent,
     SignupComponent,
