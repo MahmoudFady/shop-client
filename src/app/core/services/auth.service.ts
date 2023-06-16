@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { LocalStorageService } from './local-stroage.service';
 interface IUserRes {
   token: string;
   userId: string;
@@ -11,6 +12,7 @@ interface IUserRes {
 export class AuthService {
   private readonly userEndPoint = environment.baseUrl + 'users/';
   private readonly isAuth$ = new Subject<boolean>();
+  private localStorageService = inject(LocalStorageService);
   private http = inject(HttpClient);
   private router = inject(Router);
   signup(user: any) {
@@ -20,8 +22,8 @@ export class AuthService {
     return this.http.post<IUserRes>(this.userEndPoint + 'signin', data);
   }
   successAuth(token: string, userId: string) {
-    localStorage.setItem('token', token);
-    localStorage.setItem('userId', userId);
+    this.localStorageService.storeSecureData('token', token);
+    this.localStorageService.storeSecureData('userId', userId);
     this.isAuth$.next(true);
   }
   logout() {
@@ -30,9 +32,14 @@ export class AuthService {
     this.router.navigateByUrl('/auth/signin');
   }
   isAuthSaved() {
-    return localStorage.getItem('token') && localStorage.getItem('userId')
-      ? true
-      : false;
+    console.log(this.getToken())
+    return this.getToken() && this.getUserId() ? true : false;
+  }
+  getToken() {
+    return this.localStorageService.retrieveSecureData('token');
+  }
+  getUserId() {
+    return this.localStorageService.retrieveSecureData('userId');
   }
   isAuthListener() {
     return this.isAuth$.asObservable();
