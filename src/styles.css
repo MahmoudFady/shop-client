@@ -28,14 +28,15 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.warn-bg {
-  background-color: var(--warnColor) !important;
-  color: #fff !important;
+
+div.alert {
+  border: none;
 }
-.success-bg {
+.successSnack {
   background-color: #080 !important;
   color: #fff !important;
 }
-div.alert {
-  border: none;
+.dangerSnack {
+  background-color: var(--warnColor) !important;
+  color: #fff !important;
 }

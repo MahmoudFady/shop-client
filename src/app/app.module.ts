@@ -20,6 +20,7 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { LoaderComponent } from './core/shared/components/loader/loader.component';
 import { AuthInterceptorService } from './core/services/auth-interceptor.service';
 import { FavouritesComponent } from './pages/favourites/favourites.component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,10 @@ import { FavouritesComponent } from './pages/favourites/favourites.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,
+    },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { duration: 800 },
     },
   ],
   bootstrap: [AppComponent],
