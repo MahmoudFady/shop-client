@@ -1,16 +1,25 @@
 import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ICart } from '../shared/models/cart.model';
 import { environment } from 'src/environments/environment.development';
+import { ProductQuanService } from './product-quan.service';
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private readonly baseUrl = environment.baseUrl + 'cart/';
   private cart$ = new BehaviorSubject<ICart | null>(null);
+  private productQuanService = inject(ProductQuanService);
   constructor(private http: HttpClient) {}
   private cartObserver = {
     next: (response: { cart: ICart }) => {
       this.cart$.next(response.cart);
+      if (response.cart) {
+        const items: any = {};
+        response.cart.products.forEach((item) => {
+          items[item.product._id] = item.quantity;
+        });
+        this.productQuanService.updateCartItems(items);
+      }
     },
     error: (err: any) => {},
   };
@@ -20,20 +29,40 @@ export class CartService {
   getProductInCart() {
     return this.cart$;
   }
-  addProduct(id: string) {
+  createCart(productId: string, productPrice: number) {
+    const url = `${this.baseUrl}new/${productId}`;
+    this.http
+      .post<{ cart: ICart }>(
+        url,
+        {},
+        {
+          params: { productPrice },
+        }
+      )
+      .subscribe(this.cartObserver);
+  }
+  addProduct(id: string, productPrice: number) {
     const url = `${this.baseUrl}${id}`;
-    this.http.post<{ cart: ICart }>(url, {}).subscribe(this.cartObserver);
+    this.http
+      .post<{ cart: ICart }>(
+        url,
+        {},
+        {
+          params: { productPrice },
+        }
+      )
+      .subscribe(this.cartObserver);
   }
   removeProduct(id: string) {
     const url = `${this.baseUrl}${id}`;
     this.http.delete<{ cart: ICart }>(url).subscribe(this.cartObserver);
   }
   incrPorductQuan(id: string) {
-    const url = `${this.baseUrl}increaseQuantity/${id}`;
+    const url = `${this.baseUrl}${id}`;
     this.http.patch<{ cart: ICart }>(url, {}).subscribe(this.cartObserver);
   }
   decrPorductQuan(id: string) {
-    const url = `${this.baseUrl}decreaseQuantity/${id}`;
+    const url = `${this.baseUrl}${id}`;
     this.http.delete<{ cart: ICart }>(url, {}).subscribe(this.cartObserver);
   }
   getUpdatedCartListener() {

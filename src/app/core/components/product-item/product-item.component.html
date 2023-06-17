@@ -24,6 +24,11 @@
     </div>
   </div>
   <div class="info btns-ctrls">
-    <button><i class="fa-sharp fa-solid fa-cart-plus"></i></button>
+    <app-product-quantity-controls
+      [productId]="product._id"
+      [productPrice]="
+        product.discount.isValid ? product.priceAfterDiscount : product.price
+      "
+    ></app-product-quantity-controls>
   </div>
 </div>

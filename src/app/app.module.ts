@@ -22,6 +22,7 @@ import { AuthInterceptorService } from './core/services/auth-interceptor.service
 import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { TextShortenPipe } from './core/pipes/text-shorten.pipe';
+import { ProductQuantityControlsComponent } from './core/components/product-quantity-controls/product-quantity-controls.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { TextShortenPipe } from './core/pipes/text-shorten.pipe';
     ProductSingleComponent,
     LoaderComponent,
     FavouritesComponent,
+    ProductQuantityControlsComponent,
   ],
   imports: [
     BrowserModule,

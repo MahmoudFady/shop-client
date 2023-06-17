@@ -8,6 +8,6 @@ export interface IProductItem {
   discount: Discount;
   thumbnail: string;
   category: string;
-  priceAfterDiscount: string;
+  priceAfterDiscount: number;
   avgRating: number;
 }
