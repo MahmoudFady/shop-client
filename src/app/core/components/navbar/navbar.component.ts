@@ -9,6 +9,7 @@ import { FavouritesService } from '../../services/favourites.service';
 })
 export class NavbarComponent {
   isAuth = false;
+  cartLength = 0;
   authService = inject(AuthService);
   favsService = inject(FavouritesService);
   favsLength = 0;

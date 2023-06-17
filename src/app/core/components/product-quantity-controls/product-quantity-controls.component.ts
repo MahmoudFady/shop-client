@@ -45,15 +45,16 @@ export class ProductQuantityControlsComponent {
     this.quantity += 1;
   }
   onIncrQuantity() {
-    this.cartService.incrPorductQuan(this.productId);
+    if (this.quantity === 1) {
+      this.cartService.removeProduct(this.productId )
+    }
+    this.cartService.updateProductQuan(this.productId, this.productPrice, 1);
     this.snackBarService.display('one item added');
-
     this.quantity += 1;
   }
   onDecrQuantity() {
-    this.cartService.decrPorductQuan(this.productId);
-    this.snackBarService.display('one item removed');
-
+    this.cartService.updateProductQuan(this.productId, -this.productPrice, -1);
+    this.snackBarService.display('one item deleted');
     this.quantity -= 1;
   }
 }

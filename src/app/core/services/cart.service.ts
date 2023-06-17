@@ -15,6 +15,7 @@ export class CartService {
       this.cart$.next(response.cart);
       if (response.cart) {
         const items: any = {};
+        console.log(response.cart.products);
         response.cart.products.forEach((item) => {
           items[item.product._id] = item.quantity;
         });
@@ -57,15 +58,27 @@ export class CartService {
     const url = `${this.baseUrl}${id}`;
     this.http.delete<{ cart: ICart }>(url).subscribe(this.cartObserver);
   }
-  incrPorductQuan(id: string) {
-    const url = `${this.baseUrl}${id}`;
-    this.http.patch<{ cart: ICart }>(url, {}).subscribe(this.cartObserver);
-  }
-  decrPorductQuan(id: string) {
-    const url = `${this.baseUrl}${id}`;
-    this.http.delete<{ cart: ICart }>(url, {}).subscribe(this.cartObserver);
+  updateProductQuan(
+    productId: string,
+    productPrice: number,
+    increaser: number
+  ) {
+    const url = `${this.baseUrl}${productId}`;
+    this.http
+      .patch<{ cart: ICart }>(
+        url,
+        {},
+        {
+          params: { productPrice, increaser },
+        }
+      )
+      .subscribe(this.cartObserver);
   }
   getUpdatedCartListener() {
     return this.cart$.asObservable();
+  }
+  clearCart() {
+    this.cart$.next(null);
+    this.productQuanService.updateCartItems([]);
   }
 }

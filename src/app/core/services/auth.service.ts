@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { LocalStorageService } from './local-stroage.service';
 import { FavouritesService } from './favourites.service';
+import { CartService } from './cart.service';
 interface IUserRes {
   token: string;
   userId: string;
@@ -15,6 +16,7 @@ export class AuthService {
   private readonly isAuth$ = new Subject<boolean>();
   private localStorageService = inject(LocalStorageService);
   private favsService = inject(FavouritesService);
+  private cartService = inject(CartService);
   private http = inject(HttpClient);
   private router = inject(Router);
   signup(user: any) {
@@ -27,11 +29,13 @@ export class AuthService {
     this.localStorageService.storeSecureData('token', token);
     this.localStorageService.storeSecureData('userId', userId);
     this.favsService.getUserFavs();
+    this.cartService.getUserCart();
     this.isAuth$.next(true);
   }
   logout() {
     localStorage.clear();
     this.isAuth$.next(false);
+    this.cartService.clearCart();
     this.router.navigateByUrl('/auth/signin');
   }
   isAuthSaved() {

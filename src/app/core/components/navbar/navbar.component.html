@@ -31,8 +31,12 @@
             class="fa-solid fa-heart"
           ></i>
         </a>
-        <a *ngIf="isAuth" class="nav-link" routerLink="user/cart">
-          <i class="fa-solid fa-cart-shopping"></i>
+        <a *ngIf="isAuth" class="nav-link" routerLink="/user/cart">
+          <i
+            [matBadge]="cartLength"
+            matBadgeColor="warn"
+            class="fa-sharp fa-solid fa-cart-shopping"
+          ></i>
         </a>
         <a *ngIf="isAuth" class="nav-link" routerLink="/user/profile">
           <i class="fa-solid fa-user"></i>
