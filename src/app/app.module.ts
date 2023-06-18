@@ -23,6 +23,7 @@ import { FavouritesComponent } from './pages/favourites/favourites.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { TextShortenPipe } from './core/pipes/text-shorten.pipe';
 import { ProductQuantityControlsComponent } from './core/components/product-quantity-controls/product-quantity-controls.component';
+import { AddReviewComponent } from './core/components/add-review/add-review.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { ProductQuantityControlsComponent } from './core/components/product-quan
     LoaderComponent,
     FavouritesComponent,
     ProductQuantityControlsComponent,
+    AddReviewComponent
   ],
   imports: [
     BrowserModule,
